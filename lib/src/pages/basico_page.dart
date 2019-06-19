@@ -9,45 +9,54 @@ class BasicoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          _crearImagen(),
-          _crearTitulo(),
-          _crearAcciones(),
-          _texto(),
-          _texto(),
-          _texto(),
-          _texto(),
-          _texto(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _crearImagen(),
+            _crearTitulo(),
+            _crearAcciones(),
+            _texto(),
+            _texto(),
+            _texto(),
+            _texto(),
+            _texto(),
+          ],
+        ),
       ),
     );
   }
 
   Widget _crearImagen(){
-    return Image(
-      image: NetworkImage('https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500'),      
-      );
+    return Container(
+      width: double.infinity,
+      child: Image(
+        image: NetworkImage('https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500'), 
+        fit: BoxFit.cover, 
+        height: 230.0,    
+        ),
+    );
   }
 
   Widget _crearTitulo(){
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Nice Lake', style: estilosTitulo),
-                SizedBox(height: 7.0,),
-                Text('El lago mas lindo del...', style: estilosSubTitulo)
-              ],
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('Nice Lake', style: estilosTitulo),
+                  SizedBox(height: 7.0,),
+                  Text('El lago mas lindo del...', style: estilosSubTitulo)
+                ],
+              ),
             ),
-          ),
-          Icon(Icons.star, color: Colors.red, size: 30.0),
-          Text('41', style: TextStyle(fontSize: 20.0),)
-        ],
+            Icon(Icons.star, color: Colors.red, size: 30.0),
+            Text('41', style: TextStyle(fontSize: 20.0),)
+          ],
+        ),
       ),
     );
   }
@@ -75,11 +84,13 @@ class BasicoPage extends StatelessWidget {
   }
 
   Widget _texto(){
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-      child: Text(
-        'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino',
-        textAlign: TextAlign.justify,
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+        child: Text(
+          'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino',
+          textAlign: TextAlign.justify,
+        ),
       ),
     );
   }
